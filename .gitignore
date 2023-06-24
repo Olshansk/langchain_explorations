@@ -1,0 +1,17 @@
+# Stability AI outputs
+video_01/
+
+# General
+__pycache__/
+.DS_Store
+
+# Videos
+*.mov
+
+# Data
+data/
+
+# Development
+venv/
+.vscode/
+.env
