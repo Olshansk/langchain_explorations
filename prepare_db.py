@@ -18,7 +18,8 @@ from langchain.vectorstores import Pinecone, VectorStore
 
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")  # platform.openai.com/account/api-keys
-os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+if OPENAI_API_KEY:
+    os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 # os.environ["OPENAI_API_KEY"] = getpass.getpass("OpenAI API Key:")
 
 ### Data Sources
