@@ -25,6 +25,10 @@ prepare_db:  ## Prepare the vectorized db
 query_db:  ## Query the vectorized db
 	python3 query_db.py
 
+.PHONY: streamlit_app
+streamlit_app:  ## Run the streamlit app
+	streamlit run streamlit_app.py
+
 ####################
 ### Data Targets ###
 ####################

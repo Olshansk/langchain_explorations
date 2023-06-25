@@ -58,8 +58,9 @@ def main():
     qa = retrieval_qa(doc_db)
 
     query = "What are zero knowledge proofs?"
-    # doc_db.similarity_search(query)
     result = qa({"query": query})
+
+    # doc_db.similarity_search(query)
     # result = qa.run(query)
     print(result)
 

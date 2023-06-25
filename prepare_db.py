@@ -35,7 +35,9 @@ OPEN_AI_EMBEDDING_CTX_LENGTH = 8191  # Default context length from source code
 
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")  # app.pinecone.io
-PINECONE_ENV = os.getenv("PINECONE_ENV")  # next to api key in console
+PINECONE_ENV = os.getenv(
+    "PINECONE_ENV", "us-west4-gcp-free"
+)  # next to api key in console
 PINECONE_INDEX_NAME = "vitalik-index"  # https://app.pinecone.io/organizations/-NXb73w99AnTOSga21uA/projects/us-west4-gcp-free:5be2215/indexes
 
 
