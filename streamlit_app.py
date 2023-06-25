@@ -16,13 +16,13 @@ with st.sidebar:
         pinecone_api_key = st.text_input(
             "Pinecone API Key",
             key="langchain_search_api_key_pinecone",
-            value=PINECOINE_API_KEY,
+            value="SET VIA ENV",
         )
     elif PINECOINE_API_KEY_ST:
         pinecone_api_key = st.text_input(
             "Pinecone API Key",
             key="langchain_search_api_key_pinecone",
-            value="PROVIDED VIA ENV",
+            value="SET VIA ENV",
         )
     else:
         pinecone_api_key = st.text_input(
