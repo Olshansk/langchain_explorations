@@ -16,7 +16,7 @@ with st.sidebar:
         pinecone_api_key = st.text_input(
             "Pinecone API Key",
             key="langchain_search_api_key_pinecone",
-            value="SET VIA ENV",
+            value="ALREADY SET VIA ENV",
         )
     elif PINECOINE_API_KEY_ST:
         pinecone_api_key = st.text_input(
@@ -29,16 +29,16 @@ with st.sidebar:
             "Pinecone API Key", key="langchain_search_api_key_pinecone"
         )
 
-    if OPENAI_API_KEY:
-        openai_api_key = st.text_input(
-            "OpenAI API Key",
-            key="langchain_search_api_key_openai",
-            value=OPENAI_API_KEY,
-        )
-    else:
-        openai_api_key = st.text_input(
-            "OpenAI API Key", key="langchain_search_api_key_openai"
-        )
+    # if OPENAI_API_KEY:
+    #     openai_api_key = st.text_input(
+    #         "OpenAI API Key",
+    #         key="langchain_search_api_key_openai",
+    #         value=OPENAI_API_KEY,
+    #     )
+    # else:
+    openai_api_key = st.text_input(
+        "OpenAI API Key", key="langchain_search_api_key_openai"
+    )
     "[View the source code](https://github.com/Olshansk/langchain_explorations)"
 
 st.title("❓ AMA w/ Vitalik Buterin 🧑‍🎓")
