@@ -8,6 +8,7 @@ from langchain.utilities import GoogleSerperAPIWrapper
 from query_db import pinecone_db, retrieval_qa
 
 PINECOINE_API_KEY = os.getenv("PINECONE_API_KEY")
+PINECOINE_API_KEY_ST = st.secrets["PINECONE_API_KEY"]
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 with st.sidebar:
@@ -16,6 +17,12 @@ with st.sidebar:
             "Pinecone API Key",
             key="langchain_search_api_key_pinecone",
             value=PINECOINE_API_KEY,
+        )
+    elif PINECOINE_API_KEY_ST:
+        pinecone_api_key = st.text_input(
+            "Pinecone API Key",
+            key="langchain_search_api_key_pinecone",
+            value="PROVIDED VIA ENV",
         )
     else:
         pinecone_api_key = st.text_input(
@@ -48,7 +55,9 @@ if question:
         st.info("Please add your OpenAI API key to continue.")
     elif pinecone_api_key and openai_api_key:
         os.environ["OPENAI_API_KEY"] = openai_api_key
-        os.environ["PINECONE_API_KEY"] = pinecone_api_key
+        os.environ["PINECONE_API_KEY"] = (
+            PINECOINE_API_KEY_ST if PINECOINE_API_KEY_ST else pinecone_api_key
+        )
         doc_db = pinecone_db()
         qa = retrieval_qa(doc_db)
         result = qa({"query": question})
