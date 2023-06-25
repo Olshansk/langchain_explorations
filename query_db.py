@@ -9,7 +9,8 @@ from langchain.vectorstores import Pinecone, VectorStore
 from prepare_db import PINECONE_INDEX_NAME, pinecone_db
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")  # platform.openai.com/account/api-keys
-os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+if OPENAI_API_KEY:
+    os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
 TEMPERATURE = 0.7  ## default temperature from langchain source code
 MAX_TOKENS = 600  ##
