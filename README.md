@@ -1,6 +1,8 @@
 # Langchain Explorations
 
-Based off of this:
+AMA trained on all of Vitalik's articles
+
+![](./vitalik.gif)
 
 ## TODO
 
