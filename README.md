@@ -6,8 +6,6 @@ https://twitter.com/olshansky/status/1672827218563850240
   - [Prepare Your Secrets](#prepare-your-secrets)
   - [Option 1: Vitalik Articles (default)](#option-1-vitalik-articles-default)
   - [Option 2: Your data (custom)](#option-2-your-data-custom)
-  - [Your own data](#your-own-data)
-  - [Private Data](#private-data)
 - [References \& Resources](#references--resources)
   - [Startup Stack to easily productionize](#startup-stack-to-easily-productionize)
 - [Future Work / TODO / Improvements](#future-work--todo--improvements)
@@ -28,42 +26,60 @@ Update the env vars appropriately.
 
 ### Option 1: Vitalik Articles (default)
 
-Start the virtual environment and install the requirements:
+1. Start the virtual environment and install the requirements:
 
 ```bash
 $(make env_source)
 make pip_install
 ```
 
-Download Vitalik's articles
+2. Download Vitalik's articles
 
 ```bash
 make download_vitalik_articles
 ```
 
-Create the embeddings and upload them to Pinecone
+3. Create the embeddings and upload them to Pinecone
+
+```bash
+make prepare_db
+```
+
+4. Run it locally and ask a question:
+
+```bash
+make streamlit_app
+```
 
 ### Option 2: Your data (custom)
 
-Start the virtual environment and install the requirements:
+1. Start the virtual environment and install the requirements:
 
 ```bash
 $(make env_source)
 make pip_install
 ```
 
-Get your pdfs and put them in `./data/my_data`
+2. Get your pdfs and put them in `./data/my_data`
 
-Prepare the database with your pdfs
+```bash
+    mv or cp or w/e floats your boat into `./data/my_data`
+```
+
+3.Prepare the database with your pdfs
 
 ```bash
 # DATADIR and INDEX_NAME are customizable but you can start with the defaults if you don't know what you're doing yet
 make prepare_db DATADIR=data/my_data INDEX_NAME=my-index
 ```
 
-### Your own data
+4. Open up `query_db.py` and update `prompt_template` appropriately
 
-### Private Data
+5. Run it locally and ask a question:
+
+```bash
+make streamlit_app
+```
 
 ## References & Resources
 

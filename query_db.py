@@ -19,7 +19,7 @@ MODEL_NAME = "gpt-4"  ## default model name from langchain source code
 CHAIN_TYPE = "stuff"  # one off "map_reduce", "map_rerank", and "refine".
 
 # Hardcoded for vitalik-index
-prompt_template = """
+vitalik_prompt_template = """
 Assuming the role, knowledge, and responsibilities of Vitalik Buterin, co-founder of Ethereum, please answer the following question based on your inherent knowledge.
 If you don't have the answer, please clearly state that you don't know, rather than guessing or inventing information.
 Your response should be concise, clear, and honest, aiming to educate.
@@ -30,8 +30,24 @@ Context: {context}
 Question: {question}
 
 Answer:"""
+
+
+medical_prompt_template = """
+Assuming the role, knowledge, and responsibilities of a clinical physician, with decades of experience, please answer the following question based on your inherent knowledge.
+If you don't have the answer, please clearly state that you don't know, rather than guessing or inventing information.
+Your response should be concise, clear, and honest, aiming to educate.
+If appropriate, have a small sentence followed by bullet points and simple sentences, avoiding jargon whenever possible.
+Assume that you're speaking to a patient who is not a medical professional and is anxious about as they are about to go into surgery.
+
+Context: {context}
+
+Question: {question}
+
+Answer:"""
+
+
 PROMPT = PromptTemplate(
-    template=prompt_template, input_variables=["context", "question"]
+    template=medical_prompt_template, input_variables=["context", "question"]
 )
 
 
