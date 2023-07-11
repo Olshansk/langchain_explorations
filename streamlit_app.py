@@ -9,6 +9,7 @@ from query_db import pinecone_db, retrieval_qa
 
 PINECOINE_API_KEY = os.getenv("PINECONE_API_KEY")
 PINECOINE_API_KEY_ST = st.secrets["PINECONE_API_KEY"]
+PINECOINE_INDEX_NAME = st.secrets["PINECONE_API_KEY"]
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 with st.sidebar:
@@ -28,14 +29,6 @@ with st.sidebar:
         pinecone_api_key = st.text_input(
             "Pinecone API Key", key="langchain_search_api_key_pinecone"
         )
-
-    # if OPENAI_API_KEY:
-    #     openai_api_key = st.text_input(
-    #         "OpenAI API Key",
-    #         key="langchain_search_api_key_openai",
-    #         value=OPENAI_API_KEY,
-    #     )
-    # else:
     openai_api_key = st.text_input(
         "OpenAI API Key", key="langchain_search_api_key_openai"
     )

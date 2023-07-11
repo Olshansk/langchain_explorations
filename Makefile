@@ -33,10 +33,14 @@ endif
 ### Script Specific Targets ###
 ###############################
 
+# The default data we index is Vitalik's articles
+DATADIR ?= data/vitalik_articles
+INDEX_NAME ?= vitalik-index
+
 ## TODO: Parameterize
 .PHONY: prepare_db
 prepare_db: check-env ## Prepare the vectorized db
-	python3 prepare_db.py
+	python3 prepare_db.py $(DATADIR) $(INDEX_NAME)
 
 ## TODO: Parameterize
 .PHONY: query_db

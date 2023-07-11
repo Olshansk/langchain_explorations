@@ -1,4 +1,5 @@
 import os
+import sys
 
 # from langchain import OpenAI
 from langchain.chains import RetrievalQA
@@ -6,7 +7,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.vectorstores import Pinecone, VectorStore
 
-from prepare_db import PINECONE_INDEX_NAME, pinecone_db
+from prepare_db import pinecone_db
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")  # platform.openai.com/account/api-keys
 if OPENAI_API_KEY:
@@ -53,9 +54,8 @@ def retrieval_qa(doc_db: VectorStore) -> RetrievalQA:
     return qa
 
 
-def main():
-    print(PINECONE_INDEX_NAME)
-    doc_db = pinecone_db()
+def main(index_name):
+    doc_db = pinecone_db(index_name)
     qa = retrieval_qa(doc_db)
 
     query = "What are zero knowledge proofs?"
@@ -67,4 +67,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) != 2:
+        print("Usage: python query_db.py <index_name>")
+        sys.exit(1)
+    main(sys.argv[1])
